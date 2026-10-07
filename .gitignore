@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Persistent Browser Profile & Sessions (Contains cookies & tokens)
+session_data/
+
+# User Resume & Confidential Data
+resumes/*.pdf
+resumes/*.docx
+!resumes/.gitkeep
+
+# Database and Exports
+data/*.db
+data/*.csv
+!data/.gitkeep
+
+# Environment
+.env
