@@ -1,0 +1,106 @@
+# LinkedIn Job Hunter Configuration
+# Customize this file with your details to automate job search, screening questions, and outreach.
+
+personal:
+  full_name: "Ashutosh Somvanshi"
+  email: "ashutosh.somvanshi@example.com"
+  phone_country_code: "+91" # e.g. +91 (India), +1 (US), +44 (UK)
+  phone_number: "9876543210"
+  current_location: "Bengaluru, India"
+  linkedin_url: "https://www.linkedin.com/in/ashutosh-somvanshi"
+  github_url: ""
+  portfolio_url: ""
+
+target_job:
+  roles:
+    - "Program Manager"
+    - "Technical Program Manager"
+    - "Senior Program Manager"
+    - "IT Program Manager"
+    - "Agile Program Manager"
+  locations:
+    - "Bengaluru, Karnataka, India"
+    - "Remote"
+    - "India"
+  experience_levels:
+    - "Mid-Senior level"
+    - "Associate"
+    - "Director"
+  work_types: # 1: On-site, 2: Remote, 3: Hybrid
+    remote: true
+    hybrid: true
+    onsite: false
+  date_posted: "past_week" # "past_24h", "past_week", "past_month"
+  easy_apply_only: true
+
+# Answers to standard LinkedIn screening questions
+screening_answers:
+  # Work Authorization
+  legally_authorized_to_work: true
+  requires_sponsorship: false
+  willing_to_relocate: true
+  valid_work_permit: true
+
+  # Compensation & Notice Period
+  notice_period_days: 30
+  notice_period_string: "30 days" # Options commonly asked: "Immediate", "15 days", "30 days", "60 days", "90 days"
+  current_ctc_in_lpa: "25"
+  expected_ctc_in_lpa: "32"
+  expected_salary_currency: "INR" # or "USD"
+
+  # Core Skills & Years of Experience (For Program Manager)
+  skills_experience_years:
+    "program management": 6
+    "project management": 7
+    "agile": 6
+    "scrum": 6
+    "jira": 6
+    "confluence": 5
+    "stakeholder management": 6
+    "risk management": 5
+    "cross-functional": 6
+    "sdlc": 6
+    "software development life cycle": 6
+    "budgeting": 4
+    "vendor management": 4
+    "okr": 4
+    "kpi": 5
+    "pmp": 3
+    "scrum master": 5
+    "cloud": 4
+    "aws": 3
+    "azure": 3
+    "sql": 3
+    "python": 2
+
+  # Certifications (true/false)
+  certifications:
+    pmp: true
+    csm: true # Certified ScrumMaster
+    prince2: false
+    safe: true
+    itil: false
+
+  # Education & Languages
+  highest_education: "Bachelor's Degree" # "Master's Degree", "Bachelor's Degree"
+  english_proficiency: "Fluent" # "Native", "Fluent", "Professional", "Basic"
+  gpa: "3.8"
+
+# Safety and Rate Limiting Guardrails (Protects LinkedIn Premium Account)
+safety:
+  max_applications_per_day: 25
+  min_delay_between_actions_sec: 3
+  max_delay_between_actions_sec: 7
+  min_delay_between_jobs_sec: 15
+  max_delay_between_jobs_sec: 35
+  require_manual_review_before_submit: false # If true, pauses at the final review screen so you can inspect!
+  stealth_mode: true
+
+# Premium Outreach / InMail Pitch Settings
+outreach:
+  enable_inmail_generation: true
+  sender_tagline: "Senior Program Manager | Agile Transformation & Enterprise Delivery"
+  core_strengths:
+    - "Led end-to-end delivery of high-impact engineering programs across cross-functional teams"
+    - "Championed Agile best practices, reducing release delivery lead time by 30%"
+    - "Managed executive stakeholder alignment, budget forecasting, and enterprise risk mitigation"

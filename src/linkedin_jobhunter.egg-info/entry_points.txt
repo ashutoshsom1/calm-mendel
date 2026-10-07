@@ -1,0 +1,2 @@
+[console_scripts]
+linkedin-jobhunter = linkedin_jobhunter.cli:main

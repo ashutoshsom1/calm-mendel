@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkedin-jobhunter"
+version = "0.1.0"
+description = "Autonomous LinkedIn Job Hunter, Matching, Easy Apply, and Recruiter Outreach for Program Managers"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Ashutosh Somvanshi" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "playwright>=1.40.0",
+    "pyyaml>=6.0",
+    "rich>=13.0.0",
+    "beautifulsoup4>=4.12.0",
+    "python-dotenv>=1.0.0",
+    "google-genai>=0.1.0",
+]
+
+[project.scripts]
+linkedin-jobhunter = "linkedin_jobhunter.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"linkedin_jobhunter.config" = ["*.yaml"]

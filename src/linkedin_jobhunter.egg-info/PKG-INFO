@@ -1,15 +1,29 @@
+Metadata-Version: 2.4
+Name: linkedin-jobhunter
+Version: 0.1.0
+Summary: Autonomous LinkedIn Job Hunter, Matching, Easy Apply, and Recruiter Outreach for Program Managers
+Author: Ashutosh Somvanshi
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: playwright>=1.40.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: rich>=13.0.0
+Requires-Dist: beautifulsoup4>=4.12.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: google-genai>=0.1.0
+
 # LinkedIn Premium Full-Funnel Job Hunter (Program Manager Edition)
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-An autonomous job search, matching, application, and recruiter outreach package designed specifically for **Program Managers** leveraging **LinkedIn Premium**.
+An autonomous job search, matching, application, and recruiter outreach system designed specifically for **Program Managers** leveraging **LinkedIn Premium**.
 
 ---
 
 ## 🎯 Features
 
-1. **LinkedIn Premium Lead Harvester**:
+1. **LinkedIn Premium Lead Extractor**:
    - Captures **Hiring Managers** and **Recruiters** listed under *"Meet the hiring team"* on job listings.
    - Automatically drafts high-converting, personalized **InMail pitches** tailored to the job description and your PM track record.
 2. **Safe Automated Easy-Apply**:
@@ -29,40 +43,16 @@ An autonomous job search, matching, application, and recruiter outreach package 
 
 ---
 
-## 📦 Installation & Setup
-
-You can install `linkedin-jobhunter` directly as an editable package:
-
-```powershell
-# Clone the repository
-git clone https://github.com/ashutoshsom1/calm-mendel.git
-cd calm-mendel
-
-# Create & activate a virtual environment
-python -m venv .venv
-.\.venv\Scripts\activate
-
-# Install the package
-pip install -e .
-```
-
-Once installed, the CLI tool `linkedin-jobhunter` is available in your environment!
-
----
-
 ## 🚀 Quick Start Guide
 
 ### Step 1: Configure Your Profile & Resume
-1. **Initialize your workspace**:
-   ```powershell
-   linkedin-jobhunter init
-   ```
-2. **Add your resume**:
+1. **Add your resume**:
    Drop your Program Manager resume (PDF or DOCX) into the `resumes/` folder:
    ```powershell
+   # Example:
    copy "C:\path\to\Your_Resume.pdf" resumes\
    ```
-3. **Update your details in `config/profile.yaml`**:
+2. **Update your details in `config/profile.yaml`**:
    Open [config/profile.yaml](file:///c:/Users/ashutosh.somvanshi/Documents/antigravity/calm-mendel/config/profile.yaml) and customize:
    - Your contact info (Phone, Email, LinkedIn URL)
    - Target locations (e.g. `Bengaluru`, `Remote`, `India`)
@@ -71,10 +61,18 @@ Once installed, the CLI tool `linkedin-jobhunter` is available in your environme
 
 ---
 
-### Step 2: One-Time LinkedIn Login
+### Step 2: Initialize System
+Run the initialization check:
+```powershell
+.\.venv\Scripts\python.exe cli.py init
+```
+
+---
+
+### Step 3: One-Time LinkedIn Login
 Launch Google Chrome to log into your LinkedIn Premium account and persist your session:
 ```powershell
-linkedin-jobhunter login
+.\.venv\Scripts\python.exe cli.py login
 ```
 - A Google Chrome window will open to `https://www.linkedin.com/login`.
 - Log in normally (including 2FA / OTP if prompted).
@@ -83,76 +81,57 @@ linkedin-jobhunter login
 
 ---
 
-### Step 3: Search & Discover Program Manager Jobs
+### Step 4: Search & Discover Program Manager Jobs
 Scrape LinkedIn for target roles and capture hiring team leads:
 ```powershell
 # Default search (Program Manager in your configured locations)
-linkedin-jobhunter search
+.\.venv\Scripts\python.exe cli.py search
 
 # Custom search:
-linkedin-jobhunter search --keyword "Technical Program Manager" --location "Remote" --pages 3
+.\.venv\Scripts\python.exe cli.py search --keyword "Technical Program Manager" --location "Remote" --pages 3
 ```
 
 ---
 
-### Step 4: View Premium Hiring Leads & InMail Pitches
+### Step 5: View Premium Hiring Leads & InMail Pitches
 View hiring managers discovered from the job listings and review your personalized outreach drafts:
 ```powershell
 # List all captured hiring leads:
-linkedin-jobhunter leads
+.\.venv\Scripts\python.exe cli.py leads
 
 # View the full generated InMail pitch for Lead ID 1:
-linkedin-jobhunter leads --view-draft 1
+.\.venv\Scripts\python.exe cli.py leads --view-draft 1
 ```
 
 ---
 
-### Step 5: Run Automated Applications (Easy Apply)
+### Step 6: Run Automated Applications (Easy Apply)
 Apply to discovered jobs matching your criteria:
 
 ```powershell
-# Review Mode (Recommended for your initial runs):
+# Run with Human Review (Recommended for your first run):
 # Pauses at the final submit screen so you can inspect before submitting!
-linkedin-jobhunter apply --review
+.\.venv\Scripts\python.exe cli.py apply --review
 
 # Autonomous run (up to 15 jobs, minimum 50% match score):
-linkedin-jobhunter apply --limit 15 --min-score 50
+.\.venv\Scripts\python.exe cli.py apply --limit 15 --min-score 50
 
 # Headless mode:
-linkedin-jobhunter apply --headless
+.\.venv\Scripts\python.exe cli.py apply --headless
 ```
 
 ---
 
-### Step 6: Check Status & Export Tracking
+### Step 7: Check Status & Export Tracking
 Monitor your progress and export your pipeline to a spreadsheet:
 ```powershell
 # View summary table:
-linkedin-jobhunter status
+.\.venv\Scripts\python.exe cli.py status
 
 # Export to CSV:
-linkedin-jobhunter export
+.\.venv\Scripts\python.exe cli.py export
 ```
 The export will be saved to `data/job_applications.csv`.
-
----
-
-## 🛠️ CLI Reference
-
-You can run commands using either the console script, module call, or legacy runner:
-- `linkedin-jobhunter <command>`
-- `python -m linkedin_jobhunter <command>`
-- `python cli.py <command>`
-
-| Command | Description |
-|---|---|
-| `init` | Initializes workspace directories and validates profile configuration |
-| `login` | Opens Chrome to authenticate with LinkedIn and persist session cookies |
-| `search` | Searches LinkedIn Jobs, scores matches, and extracts hiring managers |
-| `apply` | Submits Easy Apply applications with screening question solver |
-| `leads` | Displays captured recruiters/hiring managers and tailored InMail drafts |
-| `status` | Shows summary metrics table (jobs discovered, applied, leads) |
-| `export` | Exports full pipeline tracking to `data/job_applications.csv` |
 
 ---
 
