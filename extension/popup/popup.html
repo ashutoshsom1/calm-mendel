@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Job Hunter Co-Pilot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+      <div class="icon-badge">🎯</div>
+      <div>
+        <h3>Job Hunter Co-Pilot</h3>
+        <p class="subtitle">Program Manager Edition</p>
+      </div>
+    </div>
+    <span id="tabStatus" class="status-badge checking">Checking...</span>
+  </div>
+
+  <div class="safety-card">
+    <div class="safety-header">
+      <span>🛡️ Safe Pacing Daily Limit</span>
+      <span id="dailyCountText" class="count">0 / 25</span>
+    </div>
+    <div class="progress-bar">
+      <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+    </div>
+  </div>
+
+  <div class="action-section">
+    <button id="btnAutoFill" class="btn btn-primary">
+      ⚡ Auto-Fill Easy Apply Form
+    </button>
+    <button id="btnScrapeRecruiter" class="btn btn-secondary">
+      ✉️ Draft Recruiter InMail
+    </button>
+  </div>
+
+  <div id="resultBox" class="result-box hidden">
+    <div class="result-header">
+      <strong id="resultTitle">Generated Pitch</strong>
+      <button id="btnCopy" class="btn-copy">Copy</button>
+    </div>
+    <div id="resultContent" class="result-content"></div>
+  </div>
+
+  <div class="footer">
+    <a href="https://github.com/ashutoshsom1/calm-mendel" target="_blank" class="footer-link">GitHub Repository</a>
+    <span class="dot">•</span>
+    <span class="safe-tag">100% Ban-Proof</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
